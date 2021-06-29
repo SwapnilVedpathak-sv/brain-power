@@ -5,8 +5,9 @@
     "ng": "ng",
     "start": "nodemon server.js",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -47,9 +48,5 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "typescript": "~4.3.2"
-  },
-  "engines": {
-    "node": "14.16.0",
-    "npm": "6.14.11"
   }
 }
