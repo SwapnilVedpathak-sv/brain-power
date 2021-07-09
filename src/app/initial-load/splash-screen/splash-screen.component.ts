@@ -8,17 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SplashScreenComponent implements OnInit {
 
-  constructor(private router:Router) { }
-
+  constructor(private router: Router) { }
 
   windowWidth: string = '';
   splashTransition: string = '';
   opacityChange: number = 1;
   showSplash = true;
 
-  @Input() animationDuration: number = 0.5;
-  @Input() duration: number = 3;
-  // @Input() animationType = SplashAnimationType.SlideLeft;
+  animationDuration: number = 0.5;
+  duration: number = 3;
 
   SlideLeft = "slide-left"
   SlideRight = "slide-right"

@@ -1,15 +1,13 @@
-<div
-  class="app-splash-screen"
-  [ngStyle]="{
+<div class="app-splash-screen" [ngStyle]="{
     left: windowWidth,
     opacity: opacityChange,
     transition: splashTransition
-  }"
-  *ngIf="showSplash"
->
+  }" *ngIf="showSplash">
+
   <div class="app-splash-inner">
     <div class="app-logo"></div>
     <div class="app-label">Brain Power</div>
+    <div class="app-slogan">Your Power To Earn.</div>
     <div class="app-loader"></div>
   </div>
 </div>
