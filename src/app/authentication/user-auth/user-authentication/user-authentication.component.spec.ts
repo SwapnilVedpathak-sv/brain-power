@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuperAdminRegisterComponent } from './super-admin-register.component';
+import { UserAuthenticationComponent } from './user-authentication.component';
 
-describe('SuperAdminRegisterComponent', () => {
-  let component: SuperAdminRegisterComponent;
-  let fixture: ComponentFixture<SuperAdminRegisterComponent>;
+describe('UserAuthenticationComponent', () => {
+  let component: UserAuthenticationComponent;
+  let fixture: ComponentFixture<UserAuthenticationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuperAdminRegisterComponent ]
+      declarations: [ UserAuthenticationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuperAdminRegisterComponent);
+    fixture = TestBed.createComponent(UserAuthenticationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
