@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 
 // Post Request For Create Student
 
-app.post("/ndsCertificateData", (req, res) => {
+app.post("/brainPowerData", (req, res) => {
   const postRequest = new AllCertificateData(req.body);
   postRequest
     .save()
@@ -47,7 +47,7 @@ app.post("/ndsCertificateData", (req, res) => {
 
 // Get Request For All Student
 
-app.get("/ndsCertificateData", async (req, res) => {
+app.get("/brainPowerData", async (req, res) => {
   try {
     const getAllData = await AllCertificateData.find();
     // console.log(getExpencesData);
@@ -59,7 +59,7 @@ app.get("/ndsCertificateData", async (req, res) => {
 
 // Get Request For Only Single Student
 
-app.get("/ndsCertificateData/:id", async (req, res) => {
+app.get("/brainPowerData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
     const getSingleData = await AllCertificateData.findById(_id);
@@ -71,7 +71,7 @@ app.get("/ndsCertificateData/:id", async (req, res) => {
 
 // Put Request For Update Specific Student
 
-app.put("/ndsCertificateData/:id", async (req, res) => {
+app.put("/brainPowerData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
     const putRequest = await AllCertificateData.findByIdAndUpdate(
@@ -89,7 +89,7 @@ app.put("/ndsCertificateData/:id", async (req, res) => {
 
 // Patch Request For Update Specific Student
 
-app.patch("/ndsCertificateData/:id", async (req, res) => {
+app.patch("/brainPowerData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
     const patchRequest = await AllCertificateData.findByIdAndUpdate(
@@ -107,7 +107,7 @@ app.patch("/ndsCertificateData/:id", async (req, res) => {
 
 // Delete Request For Delete Specific Student
 
-app.delete("/ndsCertificateData/:id", async (req, res) => {
+app.delete("/brainPowerData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
     const deleteRequest = await AllCertificateData.findByIdAndDelete(_id);

@@ -9,7 +9,7 @@ var today = new Date();
 var date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
 
 router.post(
-  "/registerUser",
+  "/signUp",
   [
     body("email").isEmail(),
     body("email").not().isEmpty(),
@@ -61,7 +61,7 @@ router.post(
 );
 
 router.post(
-  "/loginUser",
+  "/signIn",
   [body("email").not().isEmpty(), body("password").not().isEmpty()],
   (req, res) => {
     // console.log('req', req.body);

@@ -11,7 +11,7 @@
   <div class="container" #container>
     <div class="forms-container">
       <div class="signin-signup">
-        <form action="#" class="sign-in-form">
+        <form class="sign-in-form" [formGroup]="signInForm">
           <h2 class="title">Sign in</h2>
           <div class="input-field">
             <i class="fa fa-user"></i>
@@ -39,21 +39,21 @@
             </a>
           </div>
         </form>
-        <form action="#" class="sign-up-form">
+        <form class="sign-up-form" [formGroup]="signUpForm" >
           <h2 class="title">Sign up</h2>
           <div class="input-field">
             <i class="fa fa-user"></i>
-            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" formControlName="username"/>
           </div>
           <div class="input-field">
             <i class="fa fa-envelope"></i>
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Email" formControlName="email"/>
           </div>
           <div class="input-field">
             <i class="fa fa-lock"></i>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" formControlName="password"/>
           </div>
-          <input type="submit" class="btn" value="Sign up" />
+          <button class="btn" (click)="signUp()" >Sign up</button>
           <p class="social-text">Or Sign up with social platforms</p>
           <div class="social-media">
             <a href="#" class="social-icon">

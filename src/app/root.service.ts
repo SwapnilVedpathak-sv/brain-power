@@ -9,11 +9,17 @@ export class RootService {
   constructor(public http: HttpClient) { }
 
   readonly baseUrl = 'http://localhost:3000';
-  readonly AllCertificate = '/ndsCertificateData';
-  readonly register = '/registerUser';
-  readonly login = '/loginUser';
+  readonly AllCertificate = '/brainPowerData';
+  readonly register = '/signUp';
+  readonly login = '/signIn';
 
   getList() {
     return this.http.get(`${this.baseUrl}${this.AllCertificate}`);
+  }
+
+  registerUser(body: any) {
+    return this.http.post(`${this.baseUrl}${this.register}`, body, {
+      observe: 'body',
+    });
   }
 }
