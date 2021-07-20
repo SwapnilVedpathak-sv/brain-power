@@ -1,15 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const authModel = require("../models/authModel");
+const authModelForUser = require("../models/authModel/authModelForUser");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 
-var today = new Date();
-var date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
-
 router.post(
-  "/signUp",
+  "/signUpAsSuperAdmin",
   [
     body("email").isEmail(),
     body("email").not().isEmpty(),
@@ -30,7 +27,7 @@ router.post(
         error: "Password cannot be smaller than 5 characters",
       });
     }
-    const emailExist = await authModel.findOne({ email: req.body.email });
+    const emailExist = await authModelForUser.findOne({ email: req.body.email });
     //if the user already exists then Respond that the user with the email already exists
     if (emailExist)
       return res
@@ -42,11 +39,10 @@ router.post(
     const userDetails = {
       email: req.body.email,
       username: req.body.username,
-      password: hashedPassword,
-      creation_dt: date,
+      password: hashedPassword
     };
     //Saving the user details into database
-    const newUser = new authModel(userDetails);
+    const newUser = new authModelForUser(userDetails);
     newUser
       .save()
       .then((result) => {
@@ -61,7 +57,7 @@ router.post(
 );
 
 router.post(
-  "/signIn",
+  "/signInSuperAdmin",
   [body("email").not().isEmpty(), body("password").not().isEmpty()],
   (req, res) => {
     // console.log('req', req.body);
@@ -72,7 +68,7 @@ router.post(
       });
     }
     const { email, password } = req.body;
-    authModel.find({ email: email }, (err, data) => {
+    authModelForUser.find({ email: email }, (err, data) => {
       if (err) {
         console.log(err);
         res.status(401).json({

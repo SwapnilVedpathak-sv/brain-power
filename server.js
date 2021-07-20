@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 
-const authRouter = require("./routes/authRoutes");
+const authRouter = require("./routes/authRoutes/authRoutesForUser");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());

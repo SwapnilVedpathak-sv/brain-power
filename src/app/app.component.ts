@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RootService } from './root.service';
+import { RootService } from './Services/root.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,8 @@ export class AppComponent {
 
   ngOnInit(): void {
 
-    this.root.getList().subscribe((result) => {
-      console.log("Result", result)
-    })
+    // this.root.getList().subscribe((result) => {
+    //   console.log("Result", result)
+    // })
     }
 }

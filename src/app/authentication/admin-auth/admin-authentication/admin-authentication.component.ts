@@ -1,10 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { RootService } from 'src/app/root.service';
+import { AuthService } from 'src/app/Services/auth.service';
 import Swal from 'sweetalert2';
 import { first } from 'rxjs/operators';
-
-
 
 @Component({
   selector: 'app-admin-authentication',
@@ -19,7 +17,7 @@ export class AdminAuthenticationComponent implements OnInit {
   @ViewChild('container', { read: ElementRef, static: false }) container!: ElementRef;
 
 
-  constructor(public root : RootService) {
+  constructor(public auth: AuthService) {
     this.signUpForm = new FormGroup({
       email: new FormControl(null, Validators.email),
       username: new FormControl(null, Validators.required),
@@ -48,7 +46,7 @@ export class AdminAuthenticationComponent implements OnInit {
   signUp() {
     console.log(this.signUpForm.value);
     if (this.signUpForm.valid) {
-      this.root.registerUser(this.signUpForm.value)
+      this.auth.signUpUser(this.signUpForm.value)
         .pipe(first())
         .subscribe(data => {
           console.log("Ran", data);

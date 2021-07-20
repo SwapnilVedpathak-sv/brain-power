@@ -8,9 +8,6 @@ const userAuthSchema = new mongoose.Schema({
   password: {
     type: String,
   },
-  creation_dt: {
-    type: String,
-  },
   token: {
     type: String,
   },
@@ -21,4 +18,4 @@ const userAuthSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("authModel", userAuthSchema);
+module.exports = mongoose.model("authModelForUser", userAuthSchema);
