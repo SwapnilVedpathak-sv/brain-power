@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from './../../../Services/auth.service';
 import Swal from 'sweetalert2';
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-authentication',
@@ -13,11 +14,12 @@ export class AdminAuthenticationComponent implements OnInit {
 
   signUpForm: any = FormGroup;
   signInForm: any = FormGroup;
+  signInAdminCollection: any;
 
   @ViewChild('container', { read: ElementRef, static: false }) container!: ElementRef;
 
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private router: Router) {
     this.signUpForm = new FormGroup({
       email: new FormControl(null, Validators.email),
       username: new FormControl(null, Validators.required),
@@ -26,8 +28,8 @@ export class AdminAuthenticationComponent implements OnInit {
 
     this.signInForm = new FormGroup({
       // email: new FormControl(null, Validators.email),
-      login: new FormControl(null, Validators.required),
-      pwd: new FormControl(null, Validators.required),
+      loginUsername: new FormControl(null, Validators.required),
+      loginPassword: new FormControl(null, Validators.required),
     });
   }
 
@@ -59,6 +61,32 @@ export class AdminAuthenticationComponent implements OnInit {
         },
           error => {
             console.log("error", error.error.error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `${error.error.error}`
+            })
+          });
+    }
+  }
+
+
+  signIn() {
+    console.log(this.signInForm.value);
+    if (this.signInForm.valid) {
+      this.auth.signInAdmin(this.signInForm.value)
+        .pipe(first())
+        .subscribe(data => {
+          this.signInAdminCollection = data;
+          localStorage.setItem("token", this.signInAdminCollection.token.toString())
+          Swal.fire({
+            text: 'Login Successful !!',
+            timer: 1000,
+          })
+          this.router.navigate(['product']);
+        },
+          error => {
+            console.log(error);
             Swal.fire({
               icon: 'error',
               title: 'Oops...',

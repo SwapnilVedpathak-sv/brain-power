@@ -37,4 +37,22 @@ export class AuthService {
       observe: 'body',
     });
   }
+
+  signInUser(body: any) {
+    return this.http.post(`${this.URL}${this.signInAsUser}`, body, {
+      observe: 'body',
+    });
+  }
+
+  signInAdmin(body: any) {
+    return this.http.post(`${this.URL}${this.signInAsAdmin}`, body, {
+      observe: 'body',
+    });
+  }
+
+  signInSuperAdmin(body: any) {
+    return this.http.post(`${this.URL}${this.signInAsSuperAdmin}`, body, {
+      observe: 'body',
+    });
+  }
 }
