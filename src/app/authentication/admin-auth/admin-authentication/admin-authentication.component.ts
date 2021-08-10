@@ -74,7 +74,7 @@ export class AdminAuthenticationComponent implements OnInit {
   signIn() {
     console.log(this.signInForm.value);
     if (this.signInForm.valid) {
-      this.auth.signInAdmin(this.signInForm.value)
+      this.auth.signInUser(this.signInForm.value)
         .pipe(first())
         .subscribe(data => {
           this.signInAdminCollection = data;
@@ -83,7 +83,7 @@ export class AdminAuthenticationComponent implements OnInit {
             text: 'Login Successful !!',
             timer: 1000,
           })
-          this.router.navigate(['product']);
+          this.router.navigate(['admin-dashboard']);
         },
           error => {
             console.log(error);

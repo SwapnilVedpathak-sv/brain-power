@@ -58,17 +58,17 @@ router.post(
 
 router.post(
   "/signInAsAdmin",
-  [body("email").not().isEmpty(), body("password").not().isEmpty()],
+  [body("loginUsername").not().isEmpty(), body("loginPassword").not().isEmpty()],
   (req, res) => {
-    // console.log('req', req.body);
+    console.log('req', req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
         error: errors.array()[0],
       });
     }
-    const { email, password } = req.body;
-    authModelForUser.find({ email: email }, (err, data) => {
+    const { loginUsername, loginPassword } = req.body;
+    authModelForUser.find({ loginUsername: loginUsername }, (err, data) => {
       if (err) {
         console.log(err);
         res.status(401).json({
@@ -80,7 +80,7 @@ router.post(
         console.log(err);
         res.status(401).json({ error: "Please Enter a Valid Email!!" });
       } else {
-        bcrypt.compare(req.body.password, data[0].password, (error, result) => {
+        bcrypt.compare(req.body.loginPassword, data[0].loginPassword, (error, result) => {
           if (error) {
             res.status(401).json(error);
           }

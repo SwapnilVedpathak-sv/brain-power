@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: 'userModule', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
@@ -8,6 +9,7 @@ const routes: Routes = [
   { path: 'userAuth', loadChildren: () => import('./authentication/user-auth/user-auth.module').then(m => m.UserAuthModule) },
   { path: 'adminAuth', loadChildren: () => import('./authentication/admin-auth/admin-auth.module').then(m => m.AdminAuthModule) },
   { path: 'superAdminAuth', loadChildren: () => import('./authentication/super-admin-auth/super-admin-auth.module').then(m => m.SuperAdminAuthModule) },
+  { path: 'admin-dashboard',  component: AdminDashboardComponent },
   { path: '', loadChildren: () => import('./initial-load/initial-load.module').then(m => m.InitialLoadModule) },
 ];
 
